@@ -1,0 +1,18 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<t:pageTemplate pageTitle="Cars" >
+    <h1>Users</h1>
+
+    <div class="container text-center">
+
+        <c:forEach var="car" items="${users}">
+
+        </c:forEach>
+
+
+    </div>
+
+
+</t:pageTemplate>
+
