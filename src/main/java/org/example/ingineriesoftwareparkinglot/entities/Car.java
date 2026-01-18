@@ -6,15 +6,45 @@ import jakarta.persistence.*;
 @Table(name = "cars")
 public class Car {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    private String LicensePlate;
-    private String ParkingSpot;
+
+    // Using explicit column names to be safe
+    @Column(name = "LICENSEPLATE")
+    private String licensePlate;
+
+    @Column(name = "PARKINGSPOT")
+    private String parkingSpot;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "owner_id", nullable = false)
     private User owner;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
+    }
+
+    public String getParkingSpot() {
+        return parkingSpot;
+    }
+
+    public void setParkingSpot(String parkingSpot) {
+        this.parkingSpot = parkingSpot;
+    }
 
     public User getOwner() {
         return owner;
@@ -23,29 +53,4 @@ public class Car {
     public void setOwner(User owner) {
         this.owner = owner;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getLicensePlate() {
-        return LicensePlate;
-    }
-
-    public void setLicensePlate(String licensePlate) {
-        LicensePlate = licensePlate;
-    }
-
-    public String getParkingSpot() {
-        return ParkingSpot;
-    }
-
-    public void setParkingSpot(String parkingSpot) {
-        ParkingSpot = parkingSpot;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
 }

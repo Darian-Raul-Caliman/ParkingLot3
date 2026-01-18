@@ -1,4 +1,4 @@
-package Servlets;
+package org.example.ingineriesoftwareparkinglot.Servlets;
 
 import jakarta.inject.Inject;
 import jakarta.servlet.*;
@@ -29,6 +29,17 @@ public class Cars extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
+        String[] carIdsAsString = request.getParameterValues("car_ids");
+        if (carIdsAsString != null) {
+            List<Long> carIds = new java.util.ArrayList<>();
+            for (String id : carIdsAsString) {
+                carIds.add(Long.parseLong(id));
+            }
+            carsBean.deleteCarsByIds(carIds);
+        }
+
+        response.sendRedirect(request.getContextPath() + "/Cars");
+    }
+
 
     }
-}
