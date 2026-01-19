@@ -1,5 +1,6 @@
 package org.example.ingineriesoftwareparkinglot.Servlets;
 
+import jakarta.annotation.security.DeclareRoles;
 import jakarta.inject.Inject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -12,6 +13,13 @@ import org.example.ingineriesoftwareparkinglot.ejb.UserBean;
 import java.io.IOException;
 import java.util.List;
 
+@DeclareRoles({"READ_USERS", "WRITE_USERS", "INVOICING"})
+@ServletSecurity(
+        value = @HttpConstraint(rolesAllowed = {"READ_USERS"}),
+        httpMethodConstraints = {
+                @HttpMethodConstraint(value = "POST", rolesAllowed = {"INVOICING"})
+        }
+)
 @WebServlet(name = "Users", value = "/Users")
 public class Users extends HttpServlet {
 
