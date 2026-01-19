@@ -15,6 +15,7 @@ import org.example.ingineriesoftwareparkinglot.entities.UserGroup;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 
 @Stateless
@@ -69,7 +70,19 @@ public class UserBean {
             userGroup.setUserGroup(group);
             entityManager.persist(userGroup);
         }
+
+
     }
+
+    public Collection<String> findUsernameByUserIds(Collection<Long> userIds){
+        List<String> usernames =
+                entityManager.createQuery("SELECT u.username FROM User u WHERE u.id IN :userIds", String.class)
+                .setParameter("userIds", userIds)
+                        .getResultList();
+        return usernames;
+    }
+
+
 }
 
 
