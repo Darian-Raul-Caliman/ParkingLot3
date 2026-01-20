@@ -1,4 +1,4 @@
-package org.example.ingineriesoftwareparkinglot.Servlets;
+package org.example.ingineriesoftwareparkinglot.Servlets.cars;
 
 import jakarta.inject.Inject;
 import jakarta.servlet.*;

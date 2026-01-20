@@ -7,18 +7,23 @@ import jakarta.persistence.*;
 public class CarPhoto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    // FIX: Changed to IDENTITY to match your Database Auto-Increment
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long id;
 
+    @Column(name = "FILENAME")
     private String filename;
 
+    @Column(name = "FILETYPE")
     private String fileType;
 
     @Lob
+    @Column(name = "FILECONTENT")
     private byte[] fileContent;
 
     @OneToOne
-    @JoinColumn(name = "car_id", unique = true)
+    @JoinColumn(name = "CAR_ID", unique = true)
     private Car car;
 
     public CarPhoto() {
@@ -29,7 +34,6 @@ public class CarPhoto {
         this.fileType = fileType;
         this.fileContent = fileContent;
     }
-
 
     public Long getId() {
         return id;

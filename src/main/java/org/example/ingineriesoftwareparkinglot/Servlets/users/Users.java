@@ -1,14 +1,11 @@
-package org.example.ingineriesoftwareparkinglot.Servlets;
+package org.example.ingineriesoftwareparkinglot.Servlets.users;
 
 import jakarta.annotation.security.DeclareRoles;
 import jakarta.inject.Inject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import jakarta.ws.rs.client.Invocation;
-import org.example.ingineriesoftwareparkinglot.common.CarDto;
 import org.example.ingineriesoftwareparkinglot.common.UserDto;
-import org.example.ingineriesoftwareparkinglot.ejb.CarsBean;
 import org.example.ingineriesoftwareparkinglot.ejb.InvoiceBean;
 import org.example.ingineriesoftwareparkinglot.ejb.UserBean;
 
@@ -42,7 +39,7 @@ public class Users extends HttpServlet {
             Collection<String> usernames = userBean.findUsernameByUserIds(invoiceBean.getUserIds());
             request.setAttribute("invoices", usernames);
         }
-        request.getRequestDispatcher("/WEB-INF/jsp/users.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/users/users.jsp").forward(request, response);
     }
 
     @Override

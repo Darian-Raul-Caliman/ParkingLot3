@@ -1,4 +1,4 @@
-package org.example.ingineriesoftwareparkinglot.Servlets;
+package org.example.ingineriesoftwareparkinglot.Servlets.cars;
 
 import jakarta.inject.Inject;
 import jakarta.servlet.*;
@@ -24,7 +24,7 @@ public class AddCar extends HttpServlet {
             ServletException, IOException {
         List<UserDto> user = usersBean.findAllUsers();
         request.setAttribute("users", user);
-        request.getRequestDispatcher("/WEB-INF/pages/addCar.jsp").forward(request,response);
+        request.getRequestDispatcher("/WEB-INF/pages/cars/addCar.jsp").forward(request, response);
     }
 
     @Override

@@ -83,6 +83,22 @@ public class UserBean {
     }
 
 
+    public void updateUser(Long userId, String username, String email, String password) {
+        LOG.info("updateUser");
+        User user = entityManager.find(User.class, userId);
+        user.setUsername(username);
+        user.setEmail(email);
+
+        // FIX: Hash the password before saving!
+        if (password != null && !password.trim().isEmpty()) {
+            user.setPassword(passwordBean.convertToSha256(password));
+        }
+    }
+
+    public UserDto findById(Long id) {
+        User user = entityManager.find(User.class, id);
+        return new UserDto(user.getId(), user.getUsername(), user.getEmail());
+    }
 }
 
 

@@ -15,12 +15,12 @@ public class Car {
 
     @NotBlank(message = "Parking spot cannot be empty")
     @Size(min = 3, max = 100, message = "Parking spot must be between 3 and 100 characters")
-    @Column(name = "parking_spot", unique = true, nullable = false, length = 100)
+    @Column(name = "PARKINGSPOT", unique = true, nullable = false, length = 100)
     private String parkingSpot;
 
     @NotBlank(message = "License plate cannot be empty")
     @Size(min = 3, max = 100, message = "License plate must be between 3 and 100 characters")
-    @Column(name = "license_plate", unique = true, nullable = false, length = 100)
+    @Column(name = "LICENSEPLATE", unique = true, nullable = false, length = 100)
     private String licensePlate;
 
     @NotNull(message = "Owner cannot be null")
